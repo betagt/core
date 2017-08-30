@@ -24,9 +24,9 @@ class NewsletterResquest extends FormRequest
     public function rules($id=null)
     {
         return [
-            'nome'                  => 'required|string|min:3',
+            'nome'                  => 'string|min:3|nullable',
             'email'                 => 'required|email|unique:newsletters,email'.(isset($id)?','.$id:''),
-            'plataforma'            => 'required|string|min:2|in:mobile,portal',
+            'plataforma'            => 'string|min:2|in:mobile,portal|nullable',
         ];
     }
 }
