@@ -47,6 +47,17 @@ class ImageUploadService
         return $output_file;
     }
 
+    public function upload64($field, $path, &$data){
+        $request = &$data;
+        $filename = md5(time().uniqid(rand(), true)) . '.jpg';
+        $ifp = fopen( $path.'/'.$filename, 'wb' );
+        $data = explode( ',', $request['imagem'] );
+        fwrite( $ifp, base64_decode( $data[ 1 ] ) );
+        fclose( $ifp );
+        $request['imagem'] = $filename;
+        return null;
+    }
+
     public function upload_me($field, $path, $data)
     {
         $request = &$data;
