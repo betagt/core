@@ -1,6 +1,8 @@
 {
     "name": "betagt/core",
     "description": "",
+	"license": "MIT",
+	"type": "module",
     "authors": [
         {
             "name": "diuliano oliveira",
