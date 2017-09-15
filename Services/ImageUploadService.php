@@ -49,12 +49,15 @@ class ImageUploadService
 
     public function upload64($field, $path, &$data){
         $request = &$data;
-        $filename = md5(time().uniqid(rand(), true)) . '.jpg';
+        $data = explode( ',', $request[$field] );
+        $replace = $data[ 0 ];
+        $replace = str_replace('data:image/', '', $replace);
+        $replace = str_replace(';base64', '', $replace);
+        $filename = md5(time().uniqid(rand(), true)) . '.'.$replace;
         $ifp = fopen( $path.'/'.$filename, 'wb' );
-        $data = explode( ',', $request['imagem'] );
         fwrite( $ifp, base64_decode( $data[ 1 ] ) );
         fclose( $ifp );
-        $request['imagem'] = $filename;
+        $request[$field] = $filename;
         return null;
     }
 
