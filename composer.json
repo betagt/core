@@ -1,10 +1,10 @@
 {
-    "name": "nwidart/core",
+    "name": "betagt/core",
     "description": "",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "diuliano oliveira",
+            "email": "diuliano0@gmail.com"
         }
     ],
     "autoload": {
