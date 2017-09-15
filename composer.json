@@ -2,7 +2,7 @@
     "name": "betagt/core",
     "description": "",
 	"license": "MIT",
-	"type": "module",
+	"type": "laravel-module",
     "authors": [
         {
             "name": "diuliano oliveira",
