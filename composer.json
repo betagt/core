@@ -13,6 +13,6 @@
         }
     },
 	"require": {
-		"betagt/localidade": "1.*",
+		"betagt/localidade": "1.*"
 	}
 }
