@@ -19,6 +19,8 @@ class ImageUploadService
      */
     private $request;
 
+    const PREFIX_IMAGE = "portal_qimob";
+
     public function __construct(Request $request)
     {
         $this->request = $request;
@@ -53,7 +55,7 @@ class ImageUploadService
         $replace = $data[ 0 ];
         $replace = str_replace('data:image/', '', $replace);
         $replace = str_replace(';base64', '', $replace);
-        $filename = md5(time().uniqid(rand(), true)) . '.'.$replace;
+        $filename = self::PREFIX_IMAGE.md5(time().uniqid(rand(), true)) . '.'.$replace;
         $ifp = fopen( $path.'/'.$filename, 'wb' );
         fwrite( $ifp, base64_decode( $data[ 1 ] ) );
         fclose( $ifp );
@@ -69,7 +71,7 @@ class ImageUploadService
             if (!$file->isValid()) {
                 Throw new InvalidParameterException('Ocorreu um erro ao realizar o upload');
             }
-            $filename = md5(time()) . '.' . $file->getClientOriginalExtension();
+            $filename = self::PREFIX_IMAGE.md5(time()) . '.' . $file->getClientOriginalExtension();
             $file->move($path, $filename);
             $request['imagem'] = $filename;
             return $request;
